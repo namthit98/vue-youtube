@@ -1,0 +1,110 @@
+#app {
+  max-width: 1200px;
+  margin: auto;
+}
+
+#menu {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+button {
+  outline: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+  background: rgb(238, 234, 234);
+  border: 0px;
+}
+
+button:hover {
+    background: rgb(211, 208, 208);
+}
+
+#search-bar {
+  border: 1px solid #ccc !important;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+}
+#search-bar input {
+  border: 1px solid #ccc !important;
+  padding: 10px;
+  border-radius: 5px;
+}
+#search-label {
+  width: 25%;
+}
+#main__video {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#video-iframe {
+  width: 60%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#list {
+  width: 35%;
+  border: 1px solid #ccc;
+  padding: 10px;
+ border-radius: 5px;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.item:hover {
+  background: #ccc;
+}
+
+.item .image {
+    width: 30%;
+}
+
+.item .title {
+    width: 65%;
+    font-weight: bold;
+    font-size: 16px;
+    word-wrap: break-word;
+}
+
+.toast {
+  position: fixed;
+  top: 10px;
+  right: 50px;
+  border: 1px solid #ccc;
+  background: green;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}

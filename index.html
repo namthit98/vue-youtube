@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="vue.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="style.css">
+  <title>Vue Youtube</title>
+</head>
+
+<body>
+  <div id="app">
+    <div id="menu">
+      <button @click="changeState('home')">Home</button>
+      <button @click="changeState('library')">Library</button>
+    </div>
+
+    <div id="main">
+      <div id="search-bar">
+        <span id="search-label">SEARCH: </span>
+        <input v-model="term" @keyup.enter="search" type="text"></input>
+      </div>
+
+      <transition name="fade">
+        <div id="main__video" v-if="searchingVideos.length > 0 || myLibrary.length > 0">
+          <div id="video-iframe">
+            <iframe width="100%" height="500" :src="'https://www.youtube.com/embed/' + currentVideo.id.videoId"
+              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+            <div id="tools">
+              <button @click="addToLibrary">Add To Library</button>
+            </div>
+          </div>
+
+          <div id="list" v-if="state === 'home'">
+
+            <div class="item" @click="setCurrentVideo(item)" v-for="item in searchingVideos.slice(1)">
+              <img class="image" :src="item.snippet.thumbnails.default.url" alt="image" />
+              <div class="title">
+                <p>{{ item.snippet.title }}</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="list" v-else-if="state === 'library'">
+
+            <div class="item" @click="setCurrentVideo(item)" v-for="item in myLibrary">
+              <img class="image" :src="item.snippet.thumbnails.default.url" alt="image" />
+              <div class="title">
+                <p>{{ item.snippet.title }}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </transition>
+
+    </div>
+
+    <transition name="custom-classes-transition" enter-active-class="animated tada"
+      leave-active-class="animated bounceOutRight">
+      <div class="toast" v-if="showToast">
+        Thêm thành công !
+      </div>
+    </transition>
+
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
